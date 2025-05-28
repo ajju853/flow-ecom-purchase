@@ -1,73 +1,195 @@
-# Welcome to your Lovable project
 
-## Project info
+# eCommerce Checkout Flow Simulation
 
-**URL**: https://lovable.dev/projects/a12d3317-f36c-4980-af61-1f85af1d427a
+A complete 3-page eCommerce checkout simulation with frontend/backend separation, demonstrating real-world transaction handling, form validation, database operations, and email notifications.
 
-## How can I edit this code?
+## 🏗️ Project Structure
 
-There are several ways of editing your application.
+```
+├── backend/                 # Node.js Express API
+│   ├── models/             # MongoDB models
+│   ├── routes/             # API routes
+│   ├── services/           # Business logic
+│   └── server.js           # Entry point
+├── frontend/               # React application
+│   ├── src/
+│   │   ├── contexts/       # React context
+│   │   ├── pages/          # Page components
+│   │   └── services/       # API services
+│   └── public/
+└── README.md
+```
 
-**Use Lovable**
+## 🚀 Quick Start
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a12d3317-f36c-4980-af61-1f85af1d427a) and start prompting.
+### Backend Setup
 
-Changes made via Lovable will be committed automatically to this repo.
+1. Navigate to backend directory:
+```bash
+cd backend
+npm install
+```
 
-**Use your preferred IDE**
+2. Create `.env` file:
+```env
+PORT=5000
+MONGODB_URI=mongodb://localhost:27017/ecommerce
+MAILTRAP_HOST=sandbox.smtp.mailtrap.io
+MAILTRAP_PORT=2525
+MAILTRAP_USER=your_mailtrap_username
+MAILTRAP_PASS=your_mailtrap_password
+```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+3. Seed database and start server:
+```bash
+node seedData.js
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Frontend Setup
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+1. Navigate to frontend directory:
+```bash
+cd frontend
+npm install
+```
 
-**Use GitHub Codespaces**
+2. Create `.env` file:
+```env
+REACT_APP_API_URL=http://localhost:5000/api
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+3. Start development server:
+```bash
+npm start
+```
 
-## What technologies are used for this project?
+## 📋 Features
 
-This project is built with:
+### Landing Page
+- Product image, title, description, and price
+- Color and size variant selectors
+- Quantity selector with increment/decrement
+- "Buy Now" button with dynamic pricing
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Checkout Page
+- Complete customer information form
+- Payment details with real-time formatting
+- Dynamic order summary
+- Frontend validation with error handling
+- Transaction simulation via CVV codes
 
-## How can I deploy this project?
+### Thank You Page
+- Database-fetched order details
+- Customer information display
+- Order status with appropriate messaging
+- Email confirmation simulation
 
-Simply open [Lovable](https://lovable.dev/projects/a12d3317-f36c-4980-af61-1f85af1d427a) and click on Share -> Publish.
+## 🧪 Payment Testing
 
-## Can I connect a custom domain to my Lovable project?
+Use these CVV codes to simulate different payment outcomes:
 
-Yes, you can!
+| CVV | Result |
+|-----|--------|
+| 111 | ✅ Approved Transaction |
+| 222 | ❌ Declined Transaction |
+| 333 | ⚠️ Gateway Error |
+| Any other 3-digit | ✅ Approved |
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 📧 Email Integration
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Configured with Mailtrap.io for email simulation:
+- Order confirmation emails for approved transactions
+- Payment failure notifications
+- Separate templates for different outcomes
+
+## 🛠️ Tech Stack
+
+**Frontend:**
+- React 18
+- React Router DOM
+- Axios for API calls
+- Context API for state management
+
+**Backend:**
+- Node.js with Express
+- MongoDB with Mongoose
+- Nodemailer for email
+- Express Validator for validation
+
+**Email Service:**
+- Mailtrap.io (sandbox mode)
+
+## 🎯 Key Features Demonstrated
+
+- **Frontend/Backend Separation**: Clean API architecture
+- **Form Validation**: Real-time client-side validation
+- **Database Operations**: MongoDB with proper data modeling
+- **Transaction Simulation**: Multiple payment outcome scenarios
+- **Email Notifications**: Template-based email system
+- **Error Handling**: Comprehensive error management
+- **Responsive Design**: Mobile-friendly interface
+
+## 📦 Deployment
+
+### Frontend (Vercel)
+```bash
+cd frontend
+npm run build
+# Deploy dist folder to Vercel
+```
+
+### Backend (Railway/Render)
+```bash
+cd backend
+# Deploy to Railway or Render
+# Set environment variables in hosting platform
+```
+
+## 🔧 Environment Variables
+
+### Backend
+- `PORT`: Server port (default: 5000)
+- `MONGODB_URI`: MongoDB connection string
+- `MAILTRAP_HOST`: Mailtrap SMTP host
+- `MAILTRAP_PORT`: Mailtrap SMTP port
+- `MAILTRAP_USER`: Mailtrap username
+- `MAILTRAP_PASS`: Mailtrap password
+
+### Frontend
+- `REACT_APP_API_URL`: Backend API URL
+
+## 📊 API Endpoints
+
+### Products
+- `GET /api/products` - Get all products
+- `GET /api/products/:id` - Get single product
+- `PUT /api/products/:id/inventory` - Update inventory
+
+### Orders
+- `POST /api/orders` - Create new order
+- `GET /api/orders/:orderNumber` - Get order by number
+
+## 🧩 Database Schema
+
+### Product
+- id, name, description, price
+- image, variants (color/size)
+- inventory count
+
+### Order
+- orderNumber (unique)
+- customerInfo (contact + address)
+- paymentInfo (masked card details)
+- productInfo (selected product + variants)
+- status, total, timestamps
+
+## 📱 Responsive Design
+
+The application is fully responsive with:
+- Mobile-optimized layouts
+- Touch-friendly interfaces
+- Adaptive grid systems
+- Optimized form inputs
+
+This project demonstrates a complete eCommerce checkout flow with proper separation of concerns, comprehensive error handling, and real-world simulation capabilities.
