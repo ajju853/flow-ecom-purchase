@@ -13,6 +13,30 @@ const mockProducts: Product[] = [
       size: ['7', '8', '9', '10', '11', '12']
     },
     inventory: 50
+  },
+  {
+    id: 'prod-002',
+    name: 'Nike Air Force 1 Low',
+    description: 'The classic Nike Air Force 1 delivers comfort and style with premium leather construction and legendary Air cushioning technology.',
+    price: 90.00,
+    image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&h=600&fit=crop&crop=center',
+    variants: {
+      color: ['White', 'Black', 'Blue', 'Grey'],
+      size: ['7', '8', '9', '10', '11', '12']
+    },
+    inventory: 35
+  },
+  {
+    id: 'prod-003',
+    name: 'Adidas Stan Smith Classic',
+    description: 'The timeless Adidas Stan Smith combines minimalist design with premium materials for an effortlessly stylish look.',
+    price: 85.00,
+    image: 'https://images.unsplash.com/photo-1607522370275-f14206abe5d3?w=600&h=600&fit=crop&crop=center',
+    variants: {
+      color: ['White/Green', 'White/Black', 'All White', 'Navy'],
+      size: ['7', '8', '9', '10', '11', '12']
+    },
+    inventory: 42
   }
 ];
 
